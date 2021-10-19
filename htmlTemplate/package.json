@@ -1,0 +1,21 @@
+{
+  "name": "templte",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx webpack-dev-server --config webpack.config.js",
+    "bundle": "npx webpack --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.4.0",
+    "html-webpack-plugins": "^3.0.0",
+    "less-loader": "^10.2.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.58.2"
+  }
+}
