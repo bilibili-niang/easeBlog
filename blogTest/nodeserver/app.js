@@ -7,7 +7,7 @@ var app = express()
 var path = require('path')
 var session = require('express-session')
 var fs = require('fs')
-const port = 8080;
+const port = 81;
 
 // 模板引擎
 app.engine('html', require('express-art-template'))

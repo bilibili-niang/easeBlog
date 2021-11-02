@@ -1,14 +1,19 @@
-{{include './header.html'}}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!--继承不同的css样式-->
-{{block 'differentStyle'}}
+    {{include './header.html'}}
 
-<script src="/public/js/showdown.min.js"></script>
+    <!--继承不同的css样式-->
+    {{block 'differentStyle'}}
 
-{{/block}}
+    <script src="/public/js/showdown.min.js"></script>
+
+    {{/block}}
 </head>
 <body>
-
 
 
 <!--相同模板的头部bar-->
