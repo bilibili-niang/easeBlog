@@ -1,24 +1,28 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+{{include './header.html'}}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-    <title>{{ basename }}</title>
-    {{include './header.html'}}
+<!--继承不同的css样式-->
+{{block 'differentStyle'}}
+
+<script src="/public/js/showdown.min.js"></script>
+
+{{/block}}
 </head>
-
 <body>
+
+
+
+<!--相同模板的头部bar-->
 {{include './navbar.html'}}
+
 
 <!--内容-->
 {{include './content.html'}}
 
 
-
-
+{{block 'differentJavascriptLink'}}
+<script src="/public/js/index.js"></script>
+{{/block}}
+<!--插入页脚-->
 {{include './footer.html'}}
 </body>
 </html>
