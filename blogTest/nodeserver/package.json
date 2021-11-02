@@ -4,6 +4,7 @@
     "blueimp-md5": "^2.19.0",
     "express": "^4.17.1",
     "express-art-template": "^1.0.1",
+    "highlight.js": "^11.3.1",
     "info": "0.0.6-beta.0",
     "mongoose": "^6.0.11",
     "node": "^16.11.1",
@@ -14,6 +15,7 @@
     "bootstrap": "^3.3.7",
     "express-session": "^1.17.2",
     "jquery": "^3.2.1",
+    "marked": "^3.0.8",
     "nodemon": "^2.0.7"
   }
 }

@@ -1,15 +1,24 @@
-<!-- 继承lsyout页面的代码 -->
-{{extend './layout.html'}}
+<!DOCTYPE html>
+<html lang="zh-CN">
 
-{{block 'head'}} {{/block}}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>{{ basename }}</title>
+    {{include './header.html'}}
+</head>
 
-{{block 'content'}}
-<div>
-    <h1>
-        index页面填坑内容 {{name}}
-    </h1>
-</div>
+<body>
+{{include './navbar.html'}}
 
-{{/block}}
+<!--内容-->
+{{include './content.html'}}
 
-{{block 'script'}} {{/block}}
+
+
+
+{{include './footer.html'}}
+</body>
+</html>

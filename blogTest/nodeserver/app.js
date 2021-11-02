@@ -7,7 +7,7 @@ var app = express()
 var path = require('path')
 var session = require('express-session')
 var fs = require('fs')
-const port = 30;
+const port = 8080;
 
 // 模板引擎
 app.engine('html', require('express-art-template'))
@@ -15,6 +15,7 @@ app.use('/node_modules/', express.static('./node_modules/'))
 app.use('/source/', express.static('./source/'))
 // 开放static目录
 app.use('/public/', express.static('./public/'))
+app.use('/images/', express.static('./images/'))
 app.engine('html', require('express-art-template'))
 app.set('views', path.join(__dirname, './views/')) //默认views目录,
 //挂载session

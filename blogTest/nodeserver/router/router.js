@@ -3,19 +3,25 @@ var router = express.Router()
 var User = require('./user')
 var md5 = require('blueimp-md5')
 const fs = require('fs')
+const path = require("path");
+const marked = require('marked')
+var http = require('http');
+const url = require("url");
+var server = http.createServer();
+let querystring = require('querystring');//操作参数模块
 
 router.get('/', function (req, res) {
-    console.log(req.session.user)
-    fs.readFile(process.cwd() + "\\source\\03_git单人使用.md", 'utf8', (err, data) => {
-        if (err) {
-            throw 'err'
-        }
+    //准备返回的数据:
+    //获取服务搭建的根路径
+    var serverRootPath = path.resolve(__dirname, '..')
 
-        res.render('index.html', {
-            basename: "icecstone' blog",
-            test: 'zs',
-            markdown: data
-        })
+//markdown文件路径
+    var markdownRootPath = path.join(serverRootPath, 'source/_posts')
+    var indexDate = fs.readdirSync(markdownRootPath);
+    res.render('index.html', {
+        basename: "icecstone' blog",
+        test: 'zs',
+        indexDate: indexDate
     })
 })
 // 登录
@@ -145,17 +151,69 @@ router.post('/register', function (req, res) {
     })
     // 如果邮箱已存在,判断昵称
 
-
 })
 
 router.get('/logout', function (req, res) {
     // 清除登陆状态
     req.session.user = null
-
-
     // 重定向到登录页
     res.redirect('/')
 
 })
+
+
+// 重定向到markdown页面
+router.get('/markdown', function (req, res) {
+    // let urlStr = url.parse(req.url);
+    // let param = querystring.parse(urlStr.query);
+
+    let querystring = req.url.split("?")[1];
+    querystring = querystring.split("=")[1];
+    //%形式解析为markdown文件名
+    querystring = decodeURI(querystring)
+    // console.log(querystring)
+
+    fs.readFile(path.join(path.join(path.resolve(__dirname, '..'), '/source/_posts'), querystring), 'utf8', (err, data) => {
+        if (err) {
+            console.error(err)
+            return
+        }
+        res.render('markdown.html', {
+            markdownFile: data,
+            markdownFileName: querystring
+        })
+    })
+})
+
+router.get('/admin', function (req, res) {
+    res.render('admin.html')
+})
+
+
+// router.get('')
+
+/*router.use(function (req, res, next) {
+    var url_parts = url.parse(req.url);
+    let urlStr = url.parse(req.url);
+    let param = querystring.parse(urlStr.query);
+    console.log(param);
+    // console.log(req)
+    // console.log("请求的初始路径:  " + url_parts)
+    var filePath = path.join(path.resolve(__dirname, '..'), url_parts.pathname);
+    // console.log("请求的文件路径:   " + filePath)
+
+    /!*    fs.readFile(filePath, 'utf8', (err, data) => {
+            if (err) {
+                console.error(err)
+                return
+            }
+            res.render('markdown.html', {})
+            console.log(data)
+        })*!/
+    // res.render('markdown.html')
+
+    res.send('markdown.html')
+})*/
+
 
 module.exports = router

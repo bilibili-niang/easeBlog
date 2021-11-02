@@ -1,0 +1,19 @@
+
+
+<div class="postContainer">
+
+    <div class="limted">
+
+        <ul class="ulPost">
+            {{each indexDate}}
+            <li>
+                <div>
+                    {{$index+1}}
+                </div>
+                <a href="/markdown?markDownName={{$value}}">{{$value}}</a>
+            </li>
+
+            {{/each}}
+        </ul>
+    </div>
+</div>
